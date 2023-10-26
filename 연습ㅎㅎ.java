@@ -31,12 +31,58 @@ public class 연습ㅎㅎ {
 			System.out.println("");
 		}
 		 */
-
+		/*
 		for(int i=5;i>=1;i--) {
 			for(int j=i;j>=1;j--) {
 				System.out.print("*");
 			}
 			System.out.println();
 		}
+		*/
+		/*
+		for(int i=1;i<=5;i++) {
+			for(int j=5;j-i>=0;j--) {
+				System.out.print("*");
+			}
+			System.out.println();
+		}
+		*/
+		/*
+		연습ㅎㅎ i = new 연습ㅎㅎ();
+		int n = i.sum(4);
+		System.out.println(n);
+	}
+
+
+int sum(int n) {//1,4,10,20,35,56;
+	 
+	if(n==0) {
+		return 0;
+	}
+	if(n==1) {
+		return 1;
+	}else{
+		return sum(n-1)*2-sum(n-2)+n;
+	}
+}*/
+		/*
+		int target =  (int)(Math.random()*100)+1;
+		do {
+			Scanner s = new Scanner(System.in);
+			int t = s.nextInt();
+				
+			int i=t>target ? -1:t<target?1:0;
+			if(i==0) {
+				System.out.println("right.");
+				break;
+			}
+			else if(i<0)
+				System.out.println("down.");
+			else
+				System.out.println("up");
+		}while(true);
+		*/
+		
+		
 	}
 }
