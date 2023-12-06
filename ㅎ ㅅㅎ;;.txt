@@ -1,23 +1,126 @@
-@반복문
+데이터베이스 -> 테이블 ->  데이터(실제 데이터는 테이블 안에 있슴;;)
 
-1. 초기화식 : 최초  실행 시 시작값을 부여하는 방법.
-2. 조건식 : 반복문의 반복수행여부(=true)를 확인하는 식이당. *조건이 참이면 계속 반복!
-3. 실행식 : 반복문의 수행되어야 할 명령문이당.
-4. 증감식 : 반복문 수행시 마지막 초기값을 증가하거나 감소시킴.
+개발자는 테이블만 보면 됨;;
+데이터베이스 관리는 따로 직업이 있슴;;(DBA, 운영팀, devops-(developer+operation),mlops(AI))
+dept : 부서 테이블
+=> 부서 정보가 저장되어 있슴.
+emp : 사원 테이블
+=>  사원 정보가 저장되어 있슴;;
 
 
-@반복문의 종류
--for
--중첩 for
-	1)for문 안에  for문을 포함시킨것.(외부 for>내부  for)
-	
+간단하게 조회하기
+1. 사원 이름과 사원 직책을 조회.
+조회 -> SELECT(대문자)
+ENAME => 사원 이름
+,JOB => 직책;;
+FROM emp
+= : 같다는 뜻;;
+WHERE = 원하는 행을 추출할때.
 
--while
--do-while
+1. select : 컬럼 조회
+2. from : 테이블 조회.
+3. as : 별칭
+4. where : 로우 조회.(조건, 원하는 데이터 추출)
+5. and : 둘 다 참인것. or.(연산자)
+select
+	ename
+from emp
+where sal >= 2000
+*** SQL 실행 순서 ***;
+1. 프롬부터 읽음;;
+2. where를 읽음.
+3. select를 읽음.
 
-@continue;
-@break;
-@break;와 컨티뉴
-@이름 붙은 반복문.
 
-@연습문제-반복문(응용문제);
+-- SELECT 조회, FROM  테이블 이름이 온다.
+-- 사원번호, 입사날짜 조회.
+-- 컬럼 = 변수명.
+select
+	ename,
+	job,
+	EMPNO,
+	HIREDATE 
+from emp
+-- 부서이름과, 부서번호를 조회.
+select
+	dname,
+	deptno
+from dept
+-- select 다음에 컬럼 이름이 오고, from 다음엔 테이블 이름이 온당.
+--  Q. 사원번호, 사원이름, 사원 사수번호, 직책을 조회하시오.
+select
+	empno as "사원번호",
+	ename as "사원이름",
+	mgr as "사수번호",
+	job as "맡은직책"
+from emp
+-- as : 별칭;;
+-- Q1. 사원이름만 조회
+select
+	ename
+from emp
+-- Q2. --사원번호, 사원이름을 조회, AS 이용해서 풀 것.
+-- as는 생략이 가능하당.
+-- 실무에서 생략하는 곳도 있고 다 작성하는 곳도 있당.(회사 내규에 따름.)
+select
+	empno as 사원번호,
+	ename as 사원이름
+from emp
+
+-- Q3. 사원테이블에 있는 모든 컬럼 조회.
+-- 애스터리스크를 사용하면 전체 컬럼을 조회할 수 있으다. 실무에서 사용하지 않음.
+select 
+	*
+from emp
+
+-- select, from, as
+-- where 내가 원하는 데이터를 추출할 때 사용한당.
+-- ex) 사원 이름이 SMITH인 사람의 급여를 알고싶을 때;;
+
+select
+	ename,
+	empno,
+	hiredate,
+	job
+from emp
+where job = "SALESMAN"
+-- Q. 사원번호가 7782인 사원의 번호, 이름, 직업의 조회.
+select
+	EMPNO, 
+	ENAME,
+	JOB 
+from emp
+where empno="7782"
+-- Q 급여가 2000 이상 받는 사원이름, 직책 조회.\
+select 
+	ENAME, 
+	JOB,
+	SAL
+from emp
+where SAL>=2000
+-- Q. 1981-12-03 이후에 입사한 사원 이름, 직책, 급여, 사수번호, 입사날짜 조회.
+select 
+	ename,
+	JOB,
+	sal,
+	empno,
+	HIREDATE 
+from emp
+where hiredate>= '1981-12-03'
+-- job이 manager이고, 급여가 2000 이상은 사원의 이름, 직책, 급여, 입사날짜 조회
+select 
+	ename,
+	job,
+	sal,
+	hiredate
+from emp
+where job='manager' and sal >= '2000'
+-- Q. 입사날짜가 1981-12-03이고, 직업이 analyst인 사원의 이름, 직책, 입사날짜, 급여 조회.
+select 
+	ename,
+	job,
+	hiredate,
+	SAL 
+from emp
+where hiredate = '1981-12-03' and job = 'analyst'
+-- 
